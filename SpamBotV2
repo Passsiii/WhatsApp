@@ -23,7 +23,7 @@ function spam(){
     setTimeout(spam,80); // Verzögerung in MS
   }
   else { 
-    dispatch(campo, "textInput", "Genug Scheiße für heute!"); // Letzte Nachricht
+    dispatch(campo, "textInput", "Genug 💩 für heute!"); // Letzte Nachricht
     var input = document.getElementsByClassName("icon btn-icon icon-send");
     input[0].click();
   }
