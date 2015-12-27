@@ -1,0 +1,31 @@
+campo = document.getElementsByClassName("input")[1];
+contador1 = 1;
+function dispatch(target, eventType, char) {
+   var evt = document.createEvent("TextEvent");    
+   evt.initTextEvent (eventType, true, true, window, char, 0, "en-US");
+   target.focus();
+   target.dispatchEvent(evt);
+}
+function spam(){
+  if (contador1<101){ // Wie viele Nachrichten gesendet werden sollen
+    var new_emot = document.createElement("img");
+    var new_src = document.createAttribute("src");
+    var new_alt = document.createAttribute("alt");
+    new_src.value = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+    new_alt.value = "💩";
+    new_emot.setAttributeNode(new_src);
+    new_emot.setAttributeNode(new_alt);
+    campo.appendChild(new_emot);
+    dispatch(campo, "textInput", "Du wurdest "+contador1+"x besucht von Mr."); // Nachricht hier einfügen
+    var input = document.getElementsByClassName("icon btn-icon icon-send");
+    input[0].click();
+    contador1++;
+    setTimeout(spam,80); // Verzögerung in MS
+  }
+  else { 
+    dispatch(campo, "textInput", "Genug Scheiße für heute!"); // Letzte Nachricht
+    var input = document.getElementsByClassName("icon btn-icon icon-send");
+    input[0].click();
+  }
+}
+spam();
