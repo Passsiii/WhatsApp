@@ -1,0 +1,18 @@
+var campo = document.getElementsByClassName("input")[1];
+contador = 0;
+function dispatch(target, eventType, char) {
+   var evt = document.createEvent("TextEvent");    
+   evt.initTextEvent (eventType, true, true, window, char, 0, "en-US");
+   target.focus();
+   target.dispatchEvent(evt);
+}
+function spam(){
+  if (contador<50){ // Wie viele Nachrichten gesendet werden sollen
+    dispatch(campo, "textInput", "SPAM by SpamBotV1"); // Nachricht hier einfügen 
+    var input = document.getElementsByClassName("icon btn-icon icon-send");
+    input[0].click();
+    contador++;
+    setTimeout(spam,80); // Verzögerung in MS
+  }
+}
+spam();
